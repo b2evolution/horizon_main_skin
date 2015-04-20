@@ -137,17 +137,24 @@ div.front_main_area {
 }
 /* Responsive layout for posts */
 @media only screen and (max-width: 992px) {
+  .widget_core_coll_post_list ul {
+	 padding: 0px;
+	 margin: 0px;
+  }
   .widget_core_coll_post_list ul li {
+	 text-align: center;
      list-style-type: none; 
-	 display: inline-block;
-	 vertical-align: top;
+	 display: block;
+	 vertical-align: center;
 	 margin: 0%;
+	 margin-left: 0px;
 	 width: 100%;
 	 border: 0px solid #ddd;
 	 border-bottom: 1px solid #ddd;
 	 border-radius: 0px;
 	 margin-bottom: 20px;
-	 padding: 25px;
+	 padding-top: 25px;
+	 padding-bottom: 25px;
   }
   .widget_core_coll_post_list ul li img {
 	 width: auto;
