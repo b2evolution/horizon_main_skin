@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the main/default page template for the "bootstrap_main" skin.
+ * This is the main/default page template for the "horizon_main" skin.
  *
  * This skin only uses one single template which includes most of its features.
  * It will also rely on default includes for specific dispays (like the comment form).
@@ -12,7 +12,7 @@
  * to handle the request (based on $disp).
  *
  * @package evoskins
- * @subpackage bootstrap_main
+ * @subpackage horizon_main
  *
 	 * @version $Id: index.main.php 8793 2015-04-18 02:35:27Z fplanque $
  */
@@ -47,18 +47,6 @@ skin_include( '_html_header.inc.php', array(
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
-
-if( $is_pictured_page )
-{ // Display a picture from skin setting as background image
-	global $media_path, $media_url;
-	$bg_image = $Skin->get_setting( 'front_bg_image' );
-	echo '<div id="bg_picture">';
-	if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
-	{ // If it exists in media folder
-		echo '<img src="'.$media_url.$bg_image.'" />';
-	}
-	echo '</div>';
-}
 ?>
 
 <div class="container body">

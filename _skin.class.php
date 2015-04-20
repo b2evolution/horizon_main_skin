@@ -6,7 +6,7 @@
  * This file is part of the b2evolution project - {@link http://b2evolution.net/}
  *
  * @package skins
- * @subpackage bootstrap_main
+ * @subpackage horizon_main
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
@@ -15,7 +15,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  *
  * ATTENTION: if you make a new skin you have to change the class name below accordingly
  */
-class bootstrap_main_Skin extends Skin
+class horizon_main_Skin extends Skin
 {
 	/**
 	 * Get default name for the skin.
@@ -23,7 +23,7 @@ class bootstrap_main_Skin extends Skin
 	 */
 	function get_default_name()
 	{
-		return 'Bootstrap Main';
+		return 'Horizon Main';
 	}
 
 
