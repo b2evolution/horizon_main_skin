@@ -380,7 +380,11 @@ if( $disp == 'front' )
 <?php
 }
 ?>
-			<div class="col-md-12 center">
+		</div>
+	</div>
+</div>
+
+<div class="footer-wrapper center">
 	<?php
 		// ------------------------- "Footer" CONTAINER EMBEDDED HERE --------------------------
 		// Display container and contents:
@@ -441,9 +445,6 @@ if( $disp == 'front' )
 				'img_height'  => 32,
 			) );
 	?>
-			</div>
-		</div>
-	</div>
 </div>
 
 <?php

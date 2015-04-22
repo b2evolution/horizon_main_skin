@@ -52,6 +52,8 @@ body {
 }
 .widget_core_coll_post_list ul li {
   text-align: center;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 .widget_core_coll_post_list ul li a {
   color: #5d4a55 !important;
@@ -164,21 +166,6 @@ div.front_main_area {
   vertical-align: text-top;
   text-align: left;
 }
-.sitewide_footer p {
-  font-size: 15px;
-  padding: 10px;
-}
-.sitewide_footer {
-  text-decoration: none;
-  background-color: rgba(0,0,0,0);
-  padding: 0px !important;
-  margin: 0px !important;
-  font-size: 18px;
-  border-top: none !important;
-  box-shadow: none !important;
-  background-color: #222 !important;
-  padding: 25px !important;
-}
 .footer-wrapper {
   text-decoration: none;
   background-color: rgba(0,0,0,0);
@@ -195,11 +182,11 @@ div.front_main_area {
   text-decoration: none;
   color: #333;
 }
-.col-md-12.center a {
+.footer-wrapper.center a {
   text-decoration: none;
   color: #697b94 !important;
 }
-.col-md-12.center a:hover {
+.footer-wrapper.center a:hover {
   text-decoration: underline;
 }
 .widget_core_free_html {
