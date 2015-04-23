@@ -10,6 +10,42 @@
   background-size: cover;
   z-index: -1;
 }
+form.bComment  {
+	text-align: left !important;
+}
+.SaveButton.btn-primary {
+  font-size: 16px;
+  padding: 15px 10px;
+  background-color: #697b94;
+  border: 1px solid #697b94;
+  margin: 5px;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.SaveButton.btn-primary:hover {
+  background: rgba(255,255,255,0.5) !important;
+  color: #697b94;
+}
+.SaveButton.btn-info {
+  font-size: 16px;
+  padding: 15px 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+  margin: 5px;
+  background: rgba(255,255,255,0.5) !important;
+  color: #697b94;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.SaveButton.btn-info:hover {
+  border: 1px solid #697b94;
+  background-color: transparent;
+}
 body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
