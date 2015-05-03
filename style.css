@@ -271,3 +271,9 @@ div.front_main_area {
 .close {
 margin-top: 5px;
 }
+.alert {
+  text-align:left;
+}
+.alert a {
+  color: #337ab7 !important;
+}
