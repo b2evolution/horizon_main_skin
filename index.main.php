@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the main/default page template for the "horizon_main" skin.
+ * This is the main/default page template for the "bootstrap_main" skin.
  *
  * This skin only uses one single template which includes most of its features.
  * It will also rely on default includes for specific dispays (like the comment form).
@@ -12,15 +12,15 @@
  * to handle the request (based on $disp).
  *
  * @package evoskins
- * @subpackage horizon_main
+ * @subpackage bootstrap_main
  *
-	 * @version $Id: index.main.php 8793 2015-04-18 02:35:27Z fplanque $
+	 * @version $Id: index.main.php 8907 2015-05-08 18:16:32Z fplanque $
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
-if( version_compare( $app_version, '5.0' ) < 0 )
+if( version_compare( $app_version, '6.4' ) < 0 )
 { // Older skins (versions 2.x and above) should work on newer b2evo versions, but newer skins may not work on older b2evo versions.
-	die( 'This skin is designed for b2evolution 5.0 and above. Please <a href="http://b2evolution.net/downloads/index.html">upgrade your b2evolution</a>.' );
+	die( 'This skin is designed for b2evolution 6.4 and above. Please <a href="http://b2evolution.net/downloads/index.html">upgrade your b2evolution</a>.' );
 }
 
 // This is the main template; it may be used to display very different things.
@@ -47,9 +47,21 @@ skin_include( '_html_header.inc.php', array(
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
+
+if( $is_pictured_page )
+{ // Display a picture from skin setting as background image
+	global $media_path, $media_url;
+	$bg_image = $Skin->get_setting( 'front_bg_image' );
+	echo '<div id="bg_picture">';
+	if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
+	{ // If it exists in media folder
+		echo '<img src="'.$media_url.$bg_image.'" />';
+	}
+	echo '</div>';
+}
 ?>
 
-<div class="container body">
+<div class="container main_page_wrapper">
 
 <?php
 if( $disp != 'front' )
@@ -57,7 +69,7 @@ if( $disp != 'front' )
 ?>
 	<div class="row">
 		<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
-			<div class="PageTop">
+			<div class="evo_container evo_container__page_top">
 	<?php
 		// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 		// Display container and contents:
@@ -76,7 +88,7 @@ if( $disp != 'front' )
 			</div>
 		</div>
 		<div class="coll-xs-12 col-sm-12 col-md-8 col-md-pull-4">
-			<div class="pageHeader">
+			<div class="evo_container evo_container__header">
 	<?php
 		// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
 		// Display container and contents:
@@ -143,6 +155,8 @@ if( $disp != 'front' )
 				'lostpassword_text' => '',
 				'account_activation' => '',
 				'msgform_text'      => '',
+				'user_text'         => '',
+				'users_text'        => '',
 			) );
 		// ----------------------------- END OF REQUEST TITLE ----------------------------
 	?>
@@ -157,7 +171,6 @@ if( $disp != 'front' )
 				'feature_block' => true,
 				'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
 				'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
-				'item_class'   => '',
 			) );
 		echo '</div></div>';
 		// ----------------------------END ITEM BLOCK  ----------------------------
@@ -190,34 +203,6 @@ if( $disp != 'front' )
 			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
 			skin_include( '_item_block.inc.php', array(
 					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
-					// Comment template
-					'comment_start'         => '<div class="evoComment panel panel-default">',
-					'comment_end'           => '</div>',
-					'comment_title_before'  => '<div class="panel-heading"><h4 class="evoComment-title panel-title">',
-					'comment_title_after'   => '</h4></div><div class="panel-body">',
-					'comment_avatar_before' => '<div class="evoComment-avatar">',
-					'comment_avatar_after'  => '</div>',
-					'comment_rating_before' => '<div class="evoComment-rating">',
-					'comment_rating_after'  => '</div>',
-					'comment_text_before'   => '<div class="evoComment-text">',
-					'comment_text_after'    => '</div>',
-					'comment_info_before'   => '<div class="evoComment-info clear text-muted"><small>',
-					'comment_info_after'    => '</small></div></div>',
-					'preview_start'         => '<div class="panel panel-warning" id="comment_preview">',
-					'preview_end'           => '</div>',
-					'comment_attach_info'   => get_icon( 'help', 'imgtag', array(
-							'data-toggle'    => 'tooltip',
-							'data-placement' => 'bottom',
-							'data-html'      => 'true',
-							'title'          => htmlspecialchars( get_upload_restriction( array(
-									'block_after'     => '',
-									'block_separator' => '<br /><br />' ) ) )
-						) ),
-					// Comment form
-					'form_title_start'      => '<div class="panel '.( $Session->get('core.preview_Comment') ? 'panel-danger' : 'panel-default' )
-					                           .' comment_form"><div class="panel-heading"><h3>',
-					'form_title_end'        => '</h3></div>',
-					'after_comment_form'    => '</div>',
 				) );
 			// ----------------------------END ITEM BLOCK  ----------------------------
 
@@ -246,8 +231,8 @@ if( $disp != 'front' )
 				'disp_posts'  => '',		// We already handled this case above
 				'disp_single' => '',		// We already handled this case above
 				'disp_page'   => '',		// We already handled this case above
-				'skin_form_params' => $Skin->get_template( 'Form' ),
 				'author_link_text' => 'preferredname',
+				// Profile tabs to switch between user edit forms
 				'profile_tabs' => array(
 					'block_start'         => '<ul class="nav nav-tabs profile_tabs">',
 					'item_start'          => '<li>',
@@ -256,6 +241,7 @@ if( $disp != 'front' )
 					'item_selected_end'   => '</li>',
 					'block_end'           => '</ul>',
 				),
+				// Pagination
 				'pagination' => array(
 					'block_start'           => '<div class="center"><ul class="pagination">',
 					'block_end'             => '</ul></div>',
@@ -275,61 +261,33 @@ if( $disp != 'front' )
 				// Login
 				'display_form_messages' => true,
 				'form_title_login'      => T_('Log in to your account').'$form_links$',
-				'form_class_login'      => 'wrap-form-login',
 				'form_title_lostpass'   => get_request_title().'$form_links$',
-				'form_class_lostpass'   => 'wrap-form-lostpass',
+				'lostpass_page_class'   => 'evo_panel__lostpass',
 				'login_form_inskin'     => false,
+				'login_page_class'      => 'evo_panel__login',
 				'login_page_before'     => '<div class="$form_class$">',
 				'login_page_after'      => '</div>',
-				'login_form_class'      => 'form-login',
 				'display_reg_link'      => true,
 				'abort_link_position'   => 'form_title',
 				'abort_link_text'       => '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
 				// Register
-				'register_page_before'      => '<div class="wrap-form-register">',
+				'register_page_before'      => '<div class="evo_panel__register">',
 				'register_page_after'       => '</div>',
 				'register_form_title'       => T_('Register'),
-				'register_form_class'       => 'form-register',
 				'register_links_attrs'      => '',
 				'register_use_placeholders' => true,
 				'register_field_width'      => 252,
-				'register_disabled_page_before' => '<div class="wrap-form-register register-disabled">',
+				'register_disabled_page_before' => '<div class="evo_panel__register register-disabled">',
 				'register_disabled_page_after'  => '</div>',
 				// Activate form
 				'activate_form_title'  => T_('Account activation'),
-				'activate_page_before' => '<div class="wrap-form-activation">',
+				'activate_page_before' => '<div class="evo_panel__activation">',
 				'activate_page_after'  => '</div>',
-				// Profile
-				'profile_avatar_before' => '<div class="panel panel-default profile_avatar">',
-				'profile_avatar_after'  => '</div>',
 				// Search
 				'search_input_before'  => '<div class="input-group">',
 				'search_input_after'   => '',
 				'search_submit_before' => '<span class="input-group-btn">',
 				'search_submit_after'  => '</span></div>',
-				// Comment template
-				'comment_start'         => '<div class="evoComment panel panel-default">',
-				'comment_end'           => '</div>',
-				'comment_post_before'   => '<div class="panel-heading"><h4 class="panel-title pull-left">',
-				'comment_post_after'    => '</h4>',
-				'comment_title_before'  => '<h4 class="panel-title pull-right">',
-				'comment_title_after'   => '</h4><div class="clearfix"></div></div><div class="panel-body">',
-				'comment_avatar_before' => '<div class="evoComment-avatar">',
-				'comment_avatar_after'  => '</div>',
-				'comment_rating_before' => '<div class="evoComment-rating">',
-				'comment_rating_after'  => '</div>',
-				'comment_text_before'   => '<div class="evoComment-text">',
-				'comment_text_after'    => '</div>',
-				'comment_info_before'   => '<div class="evoComment-info clear text-muted"><small>',
-				'comment_info_after'    => '</small></div></div>',
-				'comment_attach_info'   => get_icon( 'help', 'imgtag', array(
-						'data-toggle'    => 'tooltip',
-						'data-placement' => 'bottom',
-						'data-html'      => 'true',
-						'title'          => htmlspecialchars( get_upload_restriction( array(
-								'block_after'     => '',
-								'block_separator' => '<br /><br />' ) ) )
-					) ),
 				// Front page
 				'front_block_first_title_start' => '<h1>',
 				'front_block_first_title_end'   => '</h1>',
@@ -356,96 +314,97 @@ if( $disp != 'front' )
 </div>
 
 <!-- =================================== START OF FOOTER =================================== -->
-<div class="footer">
+<div class="evo_container evo_container__footer">
 	<div class="container">
 		<div class="row">
 <?php
 if( $disp == 'front' )
 {
 ?>
-			<div class="col-md-12">
-	<?php
-		// ------------------------- "Front Page Secondary Area" CONTAINER EMBEDDED HERE --------------------------
-		// Display container and contents:
-		skin_container( NT_('Front Page Secondary Area'), array(
-				// The following params will be used as defaults for widgets included in this container:
-				'block_start'       => '<div class="widget $wi_class$">',
-				'block_end'         => '</div>',
-				'block_title_start' => '<h2 class="page-header">',
-				'block_title_end'   => '</h2>',
-			) );
-		// ----------------------------- END OF "Front Page Secondary Area" CONTAINER -----------------------------
-	?>
-			</div>
+		<div class="col-md-12">
+		<div class="evo_container evo_container__front_page_secondary">
+		<?php
+			// ------------------------- "Front Page Secondary Area" CONTAINER EMBEDDED HERE --------------------------
+			// Display container and contents:
+			skin_container( NT_('Front Page Secondary Area'), array(
+					// The following params will be used as defaults for widgets included in this container:
+					'block_start'       => '<div class="widget $wi_class$">',
+					'block_end'         => '</div>',
+					'block_title_start' => '<h2 class="page-header">',
+					'block_title_end'   => '</h2>',
+				) );
+			// ----------------------------- END OF "Front Page Secondary Area" CONTAINER -----------------------------
+		?>
+		</div>
+		</div>
 <?php
 }
 ?>
 		</div>
 	</div>
 </div>
-
-<div class="footer-wrapper center">
-	<?php
-		// ------------------------- "Footer" CONTAINER EMBEDDED HERE --------------------------
-		// Display container and contents:
-		skin_container( NT_('Footer'), array(
-				// The following params will be used as defaults for widgets included in this container:
-			) );
-		// ----------------------------- END OF "Footer" CONTAINER -----------------------------
-	?>
-	<p>
+		<div class="col-md-12 center footer-wrapper">
 		<?php
-			// Display footer text (text can be edited in Blog Settings):
-			$Blog->footer_text( array(
-					'before' => '',
-					'after'  => ' &bull; ',
+			// ------------------------- "Footer" CONTAINER EMBEDDED HERE --------------------------
+			// Display container and contents:
+			skin_container( NT_('Footer'), array(
+					// The following params will be used as defaults for widgets included in this container:
 				) );
-
-		// TODO: dh> provide a default class for pTyp, too. Should be a name and not the ityp_ID though..?!
+			// ----------------------------- END OF "Footer" CONTAINER -----------------------------
 		?>
+		<p>
+			<?php
+				// Display footer text (text can be edited in Blog Settings):
+				$Blog->footer_text( array(
+						'before' => '',
+						'after'  => ' &bull; ',
+					) );
+
+			// TODO: dh> provide a default class for pTyp, too. Should be a name and not the ityp_ID though..?!
+			?>
+
+			<?php
+				// Display a link to contact the owner of this blog (if owner accepts messages):
+				$Blog->contact_link( array(
+						'before' => '',
+						'after'  => ' &bull; ',
+						'text'   => T_('Contact'),
+						'title'  => T_('Send a message to the owner of this blog...'),
+					) );
+				// Display a link to help page:
+				$Blog->help_link( array(
+						'before' => ' ',
+						'after'  => ' ',
+						'text'   => T_('Help'),
+					) );
+			?>
+
+			<?php
+				// Display additional credits:
+				// If you can add your own credits without removing the defaults, you'll be very cool :))
+				// Please leave this at the bottom of the page to make sure your blog gets listed on b2evolution.net
+				credits( array(
+						'list_start' => '&bull;',
+						'list_end'   => ' ',
+						'separator'  => '&bull;',
+						'item_start' => ' ',
+						'item_end'   => ' ',
+					) );
+			?>
+		</p>
 
 		<?php
-			// Display a link to contact the owner of this blog (if owner accepts messages):
-			$Blog->contact_link( array(
-					'before' => '',
-					'after'  => ' &bull; ',
-					'text'   => T_('Contact'),
-					'title'  => T_('Send a message to the owner of this blog...'),
-				) );
-			// Display a link to help page:
-			$Blog->help_link( array(
-					'before' => ' ',
-					'after'  => ' ',
-					'text'   => T_('Help'),
+			// Please help us promote b2evolution and leave this logo on your blog:
+			powered_by( array(
+					'block_start' => '<div class="powered_by">',
+					'block_end'   => '</div>',
+					// Check /rsc/img/ for other possible images -- Don't forget to change or remove width & height too
+					'img_url'     => '$rsc$img/powered-by-b2evolution-120t.gif',
+					'img_width'   => 120,
+					'img_height'  => 32,
 				) );
 		?>
-
-		<?php
-			// Display additional credits:
-			// If you can add your own credits without removing the defaults, you'll be very cool :))
-			// Please leave this at the bottom of the page to make sure your blog gets listed on b2evolution.net
-			credits( array(
-					'list_start' => '&bull;',
-					'list_end'   => ' ',
-					'separator'  => '&bull;',
-					'item_start' => ' ',
-					'item_end'   => ' ',
-				) );
-		?>
-	</p>
-
-	<?php
-		// Please help us promote b2evolution and leave this logo on your blog:
-		powered_by( array(
-				'block_start' => '<div class="powered_by">',
-				'block_end'   => '</div>',
-				// Check /rsc/img/ for other possible images -- Don't forget to change or remove width & height too
-				'img_url'     => '$rsc$img/powered-by-b2evolution-120t.gif',
-				'img_width'   => 120,
-				'img_height'  => 32,
-			) );
-	?>
-</div>
+		</div>
 
 <?php
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------

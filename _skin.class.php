@@ -6,7 +6,7 @@
  * This file is part of the b2evolution project - {@link http://b2evolution.net/}
  *
  * @package skins
- * @subpackage horizon_main
+ * @subpackage bootstrap_main
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
@@ -37,16 +37,14 @@ class horizon_main_Skin extends Skin
 
 
 	/**
-	 * Get the container codes of the skin main containers
+	 * What evoSkins API does has this skin been designed with?
 	 *
-	 * @return array
+	 * This determines where we get the fallback templates from (skins_fallback_v*)
+	 * (allows to use new markup in new b2evolution versions)
 	 */
-	function get_declared_containers()
+	function get_api_version()
 	{
-		return array_merge( parent::get_declared_containers(), array(
-				'index.main.php' => array( 'header', 'footer', 'menu', 'page_top', 'front_page_secondary_area' ),
-				'_item_block.inc.php' => array( 'item_single' ),
-			) );
+		return 6;
 	}
 
 
@@ -62,7 +60,7 @@ class horizon_main_Skin extends Skin
 				// Front page
 				'front_bg_image' => array(
 					'label' => T_('Front page background image'),
-					'defaultvalue' => 'shared/global/sunset/sunset.jpg',
+					'defaultvalue' => '../skins/horizon_main_skin/images/bg-picture.jpg',
 					'type' => 'text',
 					'size' => '50'
 				),
@@ -194,16 +192,29 @@ class horizon_main_Skin extends Skin
 		require_css( '#bootstrap_css#', 'blog' );
 		// require_css( '#bootstrap_theme_css#', 'blog' );
 
-		// rsc/less/bootstrap-basic_styles.less
-		// rsc/less/bootstrap-basic.less
-		// rsc/less/bootstrap-blog_base.less
-		// rsc/less/bootstrap-item_base.less
-		// rsc/less/bootstrap-evoskins.less
-		// rsc/build/bootstrap-b2evo_base.bundle.css // CSS concatenation of the above
-		require_css( 'bootstrap-b2evo_base.bmin.css', 'blog' ); // Concatenation + Minifaction of the above
-
+		if( $debug )
+		{	// Use readable CSS:
+			// rsc/less/bootstrap-basic_styles.less
+			// rsc/less/bootstrap-basic.less
+			// rsc/less/bootstrap-blog_base.less
+			// rsc/less/bootstrap-item_base.less
+			// rsc/less/bootstrap-evoskins.less
+			require_css( 'bootstrap-b2evo_base.bundle.css', 'blog' );  // CSS concatenation of the above
+		}
+		else
+		{	// Use minified CSS:
+			require_css( 'bootstrap-b2evo_base.bmin.css', 'blog' ); // Concatenation + Minifaction of the above
+		}
+		
 		// Make sure standard CSS is called ahead of custom CSS generated below:
-		require_css( 'style.css', true );
+		if( $debug )
+		{	// Use readable CSS:
+			require_css( 'style.css', 'relative' );	// Relative to <base> tag (current skin folder)
+		}
+		else
+		{	// Use minified CSS:
+			require_css( 'style.min.css', 'relative' );	// Relative to <base> tag (current skin folder)
+		}
 
 		// Colorbox (a lightweight Lightbox alternative) allows to zoom on images and do slideshows with groups of images:
 		if( $this->get_setting( 'colorbox' ) )
@@ -273,8 +284,10 @@ class horizon_main_Skin extends Skin
 			}
 			if( $link_color && $icon_color )
 			{ // Custom icon color:
-				$custom_css .= 'body.pictured .widget--social-media-links a { color: '.$icon_color.'; background-color: '.$link_color." }\n";
-				$custom_css .= 'body.pictured .widget--social-media-links a:hover { color: '.$link_color.'; background-color: '.$icon_color." }\n";
+				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:not([class*="ufld__textcolor"]):not(:hover) { color: '.$icon_color." }\n";
+				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:not([class*="ufld__bgcolor"]):not(:hover) { background-color: '.$link_color." }\n";
+				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:hover:not([class*="ufld__hovertextcolor"]) { color: '.$link_color." }\n";
+				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:hover:not([class*="ufld__hoverbgcolor"]) { background-color: '.$icon_color." }\n";
 			}
 
 			if( ! empty( $custom_css ) )
@@ -316,9 +329,13 @@ class horizon_main_Skin extends Skin
 							.'</ul></div>',
 						'header_text_single' => '',
 					'header_end' => '',
-					'head_title' => '<div class="panel-heading">$title$<span class="pull-right">$global_icons$</span></div>'."\n",
-					'filters_start' => '<div class="filters panel-body form-inline">',
-					'filters_end' => '</div>',
+					'head_title' => '<div class="panel-heading fieldset_title"><span class="pull-right">$global_icons$</span><h3 class="panel-title">$title$</h3></div>'."\n",
+					'global_icons_class' => 'btn btn-default btn-sm',
+					'filters_start'        => '<div class="filters panel-body">',
+					'filters_end'          => '</div>',
+					'filter_button_class'  => 'btn-sm btn-info',
+					'filter_button_before' => '<div class="form-group pull-right">',
+					'filter_button_after'  => '</div>',
 					'messages_start' => '<div class="messages form-inline">',
 					'messages_end' => '</div>',
 					'messages_separator' => '<br />',
@@ -528,6 +545,51 @@ class horizon_main_Skin extends Skin
 					'fieldend_radio'         => '',
 					'inputstart_radio'       => '<div class="controls">',
 					'inputend_radio'         => "</div>\n",
+					'inputclass_radio'       => '',
+					'radio_label_format'     => '$radio_option_label$',
+					'radio_newline_start'    => '<div class="radio"><label>',
+					'radio_newline_end'      => "</label></div>\n",
+					'radio_oneline_start'    => '<label class="radio-inline">',
+					'radio_oneline_end'      => "</label>\n",
+				);
+
+			case 'fixed_form':
+				// Form with fixed label width:
+				return array(
+					'layout'         => 'fieldset',
+					'formclass'      => 'form-horizontal',
+					'formstart'      => '',
+					'formend'        => '',
+					'title_fmt'      => '<span style="float:right">$global_icons$</span><h2>$title$</h2>'."\n",
+					'no_title_fmt'   => '<span style="float:right">$global_icons$</span>'."\n",
+					'fieldset_begin' => '<div class="fieldset_wrapper $class$" id="fieldset_wrapper_$id$"><fieldset $fieldset_attribs$><div class="panel panel-default">'."\n"
+															.'<legend class="panel-heading" $title_attribs$>$fieldset_title$</legend><div class="panel-body $class$">'."\n",
+					'fieldset_end'   => '</div></div></fieldset></div>'."\n",
+					'fieldstart'     => '<div class="form-group fixedform-group" $ID$>'."\n",
+					'fieldend'       => "</div>\n\n",
+					'labelclass'     => 'control-label fixedform-label',
+					'labelstart'     => '',
+					'labelend'       => "\n",
+					'labelempty'     => '<label class="control-label fixedform-label"></label>',
+					'inputstart'     => '<div class="controls fixedform-controls">',
+					'inputend'       => "</div>\n",
+					'infostart'      => '<div class="controls fixedform-controls"><div class="form-control-static">',
+					'infoend'        => "</div></div>\n",
+					'buttonsstart'   => '<div class="form-group"><div class="control-buttons fixedform-controls">',
+					'buttonsend'     => "</div></div>\n\n",
+					'customstart'    => '<div class="custom_content">',
+					'customend'      => "</div>\n",
+					'note_format'    => ' <span class="help-inline">%s</span>',
+					// Additional params depending on field type:
+					// - checkbox
+					'inputclass_checkbox'    => '',
+					'inputstart_checkbox'    => '<div class="controls fixedform-controls"><div class="checkbox"><label>',
+					'inputend_checkbox'      => "</label></div></div>\n",
+					'checkbox_newline_start' => '<div class="checkbox">',
+					'checkbox_newline_end'   => "</div>\n",
+					// - radio
+					'fieldstart_radio'       => '<div class="form-group radio-group" $ID$>'."\n",
+					'fieldend_radio'         => "</div>\n\n",
 					'inputclass_radio'       => '',
 					'radio_label_format'     => '$radio_option_label$',
 					'radio_newline_start'    => '<div class="radio"><label>',
