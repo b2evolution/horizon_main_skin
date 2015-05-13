@@ -1107,12 +1107,12 @@ img.loadimg:hover {
     padding: 25px 0px;
   }
 }
-/*.close {
-margin-top: 5px;
+.close {
+  margin-top: 5px;
 }
 .alert {
-  text-align:left;
-}*/
+  text-align: left;
+}
 .alert a {
   color: #337ab7 !important;
 }
