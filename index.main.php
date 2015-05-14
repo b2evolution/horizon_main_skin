@@ -67,7 +67,7 @@ if( $is_pictured_page )
 if( $disp != 'front' )
 { // Don't display header on disp=front
 ?>
-	<div class="row">
+	<header class="row">
 		<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
 			<div class="evo_container evo_container__page_top">
 	<?php
@@ -103,12 +103,13 @@ if( $disp != 'front' )
 	?>
 			</div>
 		</div>
-	</div>
+	</header>
 <?php
 }
 ?>
 <!-- =================================== START OF MAIN AREA =================================== -->
 	<div class="row">
+		<main>
 		<div class="col-md-12<?php echo $disp == 'front' ? ' front_main_area' : ''; ?>">
 
 	<?php
@@ -308,6 +309,7 @@ if( $disp != 'front' )
 
 		</div>
 	</div>
+	</main>
 </div>
 
 <!-- End of skin_wrapper -->
