@@ -16,7 +16,8 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  * ATTENTION: if you make a new skin you have to change the class name below accordingly
  */
 class horizon_main_Skin extends Skin
-{
+{	
+
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
@@ -64,196 +65,116 @@ class horizon_main_Skin extends Skin
 	function get_param_definitions( $params )
 	{
 		$r = array_merge( array(
-				'1_start' => array(
-					'layout' => 'begin_fieldset',
-					'label'  => T_('Image section')
+				// Front page
+				'front_bg_image' => array(
+					'label' => T_('Front page background image'),
+					'defaultvalue' => '../skins/horizon_main_skin/images/bg-picture.jpg',
+					'type' => 'text',
+					'size' => '50'
 				),
-					'front_bg_image' => array(
-						'label' => T_('Background image'),
-						'defaultvalue' => '../skins/horizon_main_skin/images/bg-picture.jpg',
-						'type' => 'text',
-						'size' => '50'
-					),
-					'pict_title_color' => array(
-						'label' => T_('Title color'),
-						'note' => T_('E-g: #ff0000 for red'),
-						'defaultvalue' => '#F0F0F0',
-						'type' => 'color',
-					),
-					'pict_text_color' => array(
-						'label' => T_('Text color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#333',
-						'type' => 'color',
-					),
-					'pict_link_color' => array(
-						'label' => T_('Link color'),
-						'note' => T_('E-g: #0000ff for blue'),
-						'defaultvalue' => '#697b94',
-						'type' => 'color',
-					),
-					'pict_muted_color' => array(
-						'label' => T_('Muted text color'),
-						'note' => T_('E-g: #ff0000 for red'),
-						'defaultvalue' => '#F0F0F0',
-						'type' => 'color',
-					),
-				'1_end' => array(
-					'layout' => 'end_fieldset',
+				'front_title_color' => array(
+					'label' => T_('Front page title color'),
+					'note' => T_('E-g: #ff0000 for red'),
+					'defaultvalue' => '#F0F0F0',
+					'type' => 'color',
 				),
-				'2_start' => array(
-					'layout' => 'begin_fieldset',
-					'label'  => T_('Front Page Main Area Overlay')
+				'front_text_color' => array(
+					'label' => T_('Front page text color'),
+					'note' => T_('E-g: #00ff00 for green'),
+					'defaultvalue' => '#FFFFFF',
+					'type' => 'color',
 				),
-					'front_width' => array(
-						'label' => T_('Width'),
-						'note' => '',
-						'size' => '7',
-						'defaultvalue' => '700px',
-					),
-					'front_position' => array(
-						'label' => T_('Position'),
-						'note' => '',
-						'defaultvalue' => 'middle',
-						'options' => array(
-								'left'   => T_('Left'),
-								'middle' => T_('Middle'),
-								'right'  => T_('Right'),
-							),
-						'type' => 'select',
-					),
-					'front_bg_color' => array(
-						'label' => T_('Background color'),
-						'note' => T_('E-g: #ff0000 for red'),
-						'defaultvalue' => '#000000',
-						'type' => 'color',
-					),
-					'front_bg_opacity' => array(
-						'label' => T_('Background opacity'),
-						'note' => '%',
-						'size' => '2',
-						'maxlength' => '3',
-						'defaultvalue' => '10',
-						'type' => 'integer',
-						'valid_range' => array(
-							'min' => 0, // from 0%
-							'max' => 100, // to 100%
-						),
-					),
-					'front_text_color' => array(
-						'label' => T_('Text color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#FFFFFF',
-						'type' => 'color',
-					),
-					'front_link_color' => array(
-						'label' => T_('Link color'),
-						'note' => T_('E-g: #0000ff for blue'),
-						'defaultvalue' => '#FFFFFF',
-						'type' => 'color',
-					),
-					'front_icon_color' => array(
-						'label' => T_('Inverse icon color'),
-						'note' => T_('E-g: #00ff00 for green'),
-						'defaultvalue' => '#CCCCCC',
-						'type' => 'color',
-					),
-				'2_end' => array(
-					'layout' => 'end_fieldset',
+				'front_link_color' => array(
+					'label' => T_('Front page link color'),
+					'note' => T_('E-g: #0000ff for blue'),
+					'defaultvalue' => '#FFFFFF',
+					'type' => 'color',
 				),
-				'3_start' => array(
-					'layout' => 'begin_fieldset',
-					'label'  => T_('Colorbox Image Zoom')
+				'front_icon_color' => array(
+					'label' => T_('Front page inverse icon color'),
+					'note' => T_('E-g: #00ff00 for green'),
+					'defaultvalue' => '#CCCCCC',
+					'type' => 'color',
 				),
-					'colorbox' => array(
-						'label' => T_('Colorbox Image Zoom'),
-						'note' => T_('Check to enable javascript zooming on images (using the colorbox script)'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-					'colorbox_vote_post' => array(
-						'label' => T_('Voting on Post Images'),
-						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-					'colorbox_vote_post_numbers' => array(
-						'label' => T_('Display Votes'),
-						'note' => T_('Check to display number of likes and dislikes'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-					'colorbox_vote_comment' => array(
-						'label' => T_('Voting on Comment Images'),
-						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-					'colorbox_vote_comment_numbers' => array(
-						'label' => T_('Display Votes'),
-						'note' => T_('Check to display number of likes and dislikes'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-					'colorbox_vote_user' => array(
-						'label' => T_('Voting on User Images'),
-						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-					'colorbox_vote_user_numbers' => array(
-						'label' => T_('Display Votes'),
-						'note' => T_('Check to display number of likes and dislikes'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-				'3_end' => array(
-					'layout' => 'end_fieldset',
+				'front_bg_color' => array(
+					'label' => T_('Front page main area background color'),
+					'note' => T_('E-g: #ff0000 for red'),
+					'defaultvalue' => '#000000',
+					'type' => 'color',
 				),
-				'4_start' => array(
-					'layout' => 'begin_fieldset',
-					'label'  => T_('Username options')
-				),
-					'gender_colored' => array(
-						'label' => T_('Display gender'),
-						'note' => T_('Use colored usernames to differentiate men & women.'),
-						'defaultvalue' => 0,
-						'type' => 'checkbox',
+				'front_bg_opacity' => array(
+					'label' => T_('Front page main area background opacity'),
+					'note' => '%',
+					'size' => '2',
+					'maxlength' => '3',
+					'defaultvalue' => '10',
+					'type' => 'integer',
+					'valid_range' => array(
+						'min' => 0, // from 0%
+						'max' => 100, // to 100%
 					),
-					'bubbletip' => array(
-						'label' => T_('Username bubble tips'),
-						'note' => T_('Check to enable bubble tips on usernames'),
-						'defaultvalue' => 0,
-						'type' => 'checkbox',
-					),
-					'autocomplete_usernames' => array(
-						'label' => T_('Autocomplete usernames'),
-						'note' => T_('Check to enable auto-completion of usernames entered after a "@" sign in the comment forms'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),
-				'4_end' => array(
-					'layout' => 'end_fieldset',
 				),
-
-
-				'section_access_start' => array(
-					'layout' => 'begin_fieldset',
-					'label'  => T_('When access is denied or requires login...')
+				// Colorbox
+				'colorbox' => array(
+					'label' => T_('Colorbox Image Zoom'),
+					'note' => T_('Check to enable javascript zooming on images (using the colorbox script)'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
 				),
-					'access_login_containers' => array(
-						'label' => T_('Display on login screen'),
-						'note' => '',
-						'type' => 'checklist',
-						'options' => array(
-							array( 'header',   sprintf( T_('"%s" container'), NT_('Header') ),   1 ),
-							array( 'page_top', sprintf( T_('"%s" container'), NT_('Page Top') ), 1 ),
-							array( 'menu',     sprintf( T_('"%s" container'), NT_('Menu') ),     0 ),
-							array( 'footer',   sprintf( T_('"%s" container'), NT_('Footer') ),   1 )
-							),
-						),
-				'section_access_end' => array(
-					'layout' => 'end_fieldset',
+				'colorbox_vote_post' => array(
+					'label' => T_('Voting on Post Images'),
+					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
+				),
+				'colorbox_vote_post_numbers' => array(
+					'label' => T_('Display Votes'),
+					'note' => T_('Check to display number of likes and dislikes'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
+				),
+				'colorbox_vote_comment' => array(
+					'label' => T_('Voting on Comment Images'),
+					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
+				),
+				'colorbox_vote_comment_numbers' => array(
+					'label' => T_('Display Votes'),
+					'note' => T_('Check to display number of likes and dislikes'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
+				),
+				'colorbox_vote_user' => array(
+					'label' => T_('Voting on User Images'),
+					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
+				),
+				'colorbox_vote_user_numbers' => array(
+					'label' => T_('Display Votes'),
+					'note' => T_('Check to display number of likes and dislikes'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
+				),
+				// Other settings
+				'gender_colored' => array(
+					'label' => T_('Display gender'),
+					'note' => T_('Use colored usernames to differentiate men & women.'),
+					'defaultvalue' => 0,
+					'type' => 'checkbox',
+				),
+				'bubbletip' => array(
+					'label' => T_('Username bubble tips'),
+					'note' => T_('Check to enable bubble tips on usernames'),
+					'defaultvalue' => 0,
+					'type' => 'checkbox',
+				),
+				'autocomplete_usernames' => array(
+					'label' => T_('Autocomplete usernames'),
+					'note' => T_('Check to enable auto-completion of usernames entered after a "@" sign in the comment forms'),
+					'defaultvalue' => 1,
+					'type' => 'checkbox',
 				),
 			), parent::get_param_definitions( $params ) );
 
@@ -268,22 +189,58 @@ class horizon_main_Skin extends Skin
 	 */
 	function display_init()
 	{
-		global $Messages, $disp, $debug;
+		global $Messages, $disp;
 
-		// Request some common features that the parent function (Skin::display_init()) knows how to provide:
-		parent::display_init( array(
-				'jquery',                  // Load jQuery
-				'font_awesome',            // Load Font Awesome (and use its icons as a priority over the Bootstrap glyphicons)
-				'bootstrap',               // Load Bootstrap (without 'bootstrap_theme_css')
-				'bootstrap_evo_css',       // Load the b2evo_base styles for Bootstrap (instead of the old b2evo_base styles)
-				'bootstrap_messages',      // Initialize $Messages Class to use Bootstrap styles
-				'style_css',               // Load the style.css file of the current skin
-				'colorbox',                // Load Colorbox (a lightweight Lightbox alternative + customizations for b2evo)
-				'bootstrap_init_tooltips', // Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
-				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
+		require_js( '#jquery#', 'blog' );
+
+		// Initialize font-awesome icons and use them as a priority over the glyphicons, @see get_icon()
+		init_fontawesome_icons( 'fontawesome-glyphicons' );
+
+		require_js( '#bootstrap#', 'blog' );
+		require_css( '#bootstrap_css#', 'blog' );
+		// require_css( '#bootstrap_theme_css#', 'blog' );
+
+		if( $debug )
+		{	// Use readable CSS:
+			// rsc/less/bootstrap-basic_styles.less
+			// rsc/less/bootstrap-basic.less
+			// rsc/less/bootstrap-blog_base.less
+			// rsc/less/bootstrap-item_base.less
+			// rsc/less/bootstrap-evoskins.less
+			require_css( 'bootstrap-b2evo_base.bundle.css', 'blog' );  // CSS concatenation of the above
+		}
+		else
+		{	// Use minified CSS:
+			require_css( 'bootstrap-b2evo_base.bmin.css', 'blog' ); // Concatenation + Minifaction of the above
+		}
+		
+		// Make sure standard CSS is called ahead of custom CSS generated below:
+		if( $debug )
+		{	// Use readable CSS:
+			require_css( 'style.css', 'relative' );	// Relative to <base> tag (current skin folder)
+		}
+		else
+		{	// Use minified CSS:
+			require_css( 'style.min.css', 'relative' );	// Relative to <base> tag (current skin folder)
+		}
+
+		// Colorbox (a lightweight Lightbox alternative) allows to zoom on images and do slideshows with groups of images:
+		if( $this->get_setting( 'colorbox' ) )
+		{
+			require_js_helper( 'colorbox', 'blog' );
+		}
+
+		// JS to init tooltip (E.g. on comment form for allowed file extensions)
+		add_js_headline( 'jQuery( function () { jQuery( \'[data-toggle="tooltip"]\' ).tooltip() } )' );
+
+		// Set bootstrap classes for messages
+		$Messages->set_params( array(
+				'class_success'  => 'alert alert-dismissible alert-success fade in',
+				'class_warning'  => 'alert alert-dismissible alert-warning fade in',
+				'class_error'    => 'alert alert-dismissible alert-danger fade in',
+				'class_note'     => 'alert alert-dismissible alert-info fade in',
+				'before_message' => '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>',
 			) );
-
-		// Skin specific initializations:
 
 		if( in_array( $disp, array( 'front', 'login', 'register', 'lostpassword', 'activateinfo', 'access_denied', 'access_requires_login' ) ) )
 		{
@@ -296,26 +253,6 @@ class horizon_main_Skin extends Skin
 			if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
 			{ // Custom body background image:
 				$custom_css .= '#bg_picture { background-image: url('.$media_url.$bg_image.") }\n";
-			}
-
-			if( $color = $this->get_setting( 'pict_title_color' ) )
-			{ // Custom title color:
-				$custom_css .= 'body.pictured .main_page_wrapper .widget_core_coll_title h1 a { color: '.$color." }\n";
-			}
-
-			if( $color = $this->get_setting( 'pict_text_color' ) )
-			{ // Custom text color:
-				$custom_css .= 'body.pictured { color: '.$color." }\n";
-			}
-
-			if( $color = $this->get_setting( 'pict_link_color' ) )
-			{ // Custom link color:
-				$custom_css .= 'body.pictured .main_page_wrapper a:not([class*=btn]), .evo_container__footer a:not([class*="ufld__*"]):not(:hover) { color: '.$color." }\n";
-			}
-
-			if( $color = $this->get_setting( 'pict_muted_color' ) )
-			{ // Custom muted text color:
-				$custom_css .= 'body.pictured .main_page_wrapper .text-muted { color: '.$color." }\n";
 			}
 
 			if( $color = $this->get_setting( 'front_bg_color' ) )
@@ -337,16 +274,21 @@ class horizon_main_Skin extends Skin
 				$custom_css .= '.front_main_content { background-color: rgba('.implode( ',', array_map( 'hexdec', $color ) ).','.$color_transparency.')'." }\n";
 			}
 
+			if( $color = $this->get_setting( 'front_title_color' ) )
+			{ // Custom title color:
+				$custom_css .= 'body.pictured .widget_core_coll_title h1 a { color: '.$color." }\n";
+			}
+
 			if( $color = $this->get_setting( 'front_text_color' ) )
 			{ // Custom text color:
-				$custom_css .= 'body.pictured .front_main_content, body.pictured .front_main_content h1 small { color: '.$color." }\n";
+				$custom_css .= 'body.pictured, body.pictured h1 small { color: '.$color." }\n";
 			}
 
 			$link_color = $this->get_setting( 'front_link_color' );
 			$icon_color = $this->get_setting( 'front_icon_color' );
 			if( $link_color )
 			{ // Custom link color:
-				$custom_css .= 'body.pictured .main_page_wrapper .front_main_area a { color: '.$link_color." }\n";
+				$custom_css .= 'body.pictured a { color: '.$link_color." }\n";
 			}
 			if( $link_color && $icon_color )
 			{ // Custom icon color:
@@ -354,23 +296,6 @@ class horizon_main_Skin extends Skin
 				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:not([class*="ufld__bgcolor"]):not(:hover) { background-color: '.$link_color." }\n";
 				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:hover:not([class*="ufld__hovertextcolor"]) { color: '.$link_color." }\n";
 				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:hover:not([class*="ufld__hoverbgcolor"]) { background-color: '.$icon_color." }\n";
-			}
-
-			if( $width = $this->get_setting( 'front_width' ) )
-			{ // Custom width for front main area:
-				$custom_css .= 'div.front_main_area { width: '.$width." }\n";
-			}
-
-			if( $position = $this->get_setting( 'front_position' ) )
-			{ // Custom width for front main area:
-				if( $position == 'middle' )
-				{
-					$custom_css .= 'div.front_main_area { float: none; margin-left: auto; margin-right: auto;'." }\n";
-				}
-				elseif( $position == 'right' )
-				{
-					$custom_css .= 'div.front_main_area { float: right;'." }\n";
-				}
 			}
 
 			if( ! empty( $custom_css ) )
@@ -732,21 +657,6 @@ class horizon_main_Skin extends Skin
 				// Delegate to parent class:
 				return parent::get_template( $name );
 		}
-	}
-
-
-	/**
-	 * Check if we can display a widget container
-	 *
-	 * @param string Widget container key: 'header', 'page_top', 'menu', 'sidebar', 'sidebar2', 'footer'
-	 * @param string Skin setting name
-	 * @return boolean TRUE to display
-	 */
-	function is_visible_container( $container_key, $setting_name = 'access_login_containers' )
-	{
-		$access = $this->get_setting( $setting_name );
-
-		return ( ! empty( $access ) && ! empty( $access[ $container_key ] ) );
 	}
 
 }

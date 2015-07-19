@@ -21,7 +21,9 @@ $params = array_merge( array(
 		'disp_title'       => true,
 		'feature_block'    => false,
 		'content_mode'     => 'auto',		// 'auto' will auto select depending on $disp-detail
-		'item_class'       => 'bPost',
+		'item_class'                 => 'evo_post evo_content_block',
+		'item_type_class'            => 'evo_post__ptyp_',
+		'item_status_class'          => 'evo_post__',
 		'image_class'      => 'img-responsive',
 		'image_size'       => 'fit-1280x720',
 		'author_link_text' => 'preferredname',
@@ -118,22 +120,22 @@ echo '<div id="styled_content_block">'; // Beginning of post display TODO: get r
 
 		// List all tags attached to this post:
 		$Item->tags( array(
-				'before'    => '<div class="small">'.T_('Tags').': ',
-				'after'     => '</div>',
-				'separator' => ', ',
+				'before'    => '<nav class="small post_tags"><p>Tags: </p>',
+				'after'     => '</nav>',
+				'separator' => '',
 			) );
-	?>
+		?>
 
-	<div class="small">
+		<nav class="small post_comments_link">
 		<?php
 			// Link to comments, trackbacks, etc.:
 			$Item->feedback_link( array(
 							'type' => 'comments',
 							'link_before' => '',
 							'link_after' => '',
-							'link_text_zero' => '#',
-							'link_text_one' => '#',
-							'link_text_more' => '#',
+							'link_text_zero' => T_('<span>Leave a comment <i class="fa fa-angle-double-right"></i></span>'),
+							'link_text_one' => T_('1 <i class="fa fa-comments"></i>'),
+							'link_text_more' => T_('%d <i class="fa fa-comments"></i>'),
 							'link_title' => '#',
 						) );
 
@@ -148,7 +150,7 @@ echo '<div id="styled_content_block">'; // Beginning of post display TODO: get r
 							'link_title' => '#',
 						) );
 		?>
-	</div>
+		</nav>
 
 	<?php
 		// ------------------ FEEDBACK (COMMENTS/TRACKBACKS) INCLUDED HERE ------------------
