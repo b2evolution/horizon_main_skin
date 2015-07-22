@@ -38,6 +38,8 @@ skin_include( '_html_header.inc.php', array(
 	'viewport_tag' => '#responsive#',
 	'body_class' => ( $is_pictured_page ? 'pictured' : '' ),
 ) );
+// Include Google Fonts code inside ""+
+echo "<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>";
 // Note: You can customize the default HTML header by copying the generic
 // /skins/_html_header.inc.php file into the current skin folder.
 // -------------------------------- END OF HEADER --------------------------------
@@ -323,8 +325,8 @@ if( $disp != 'front' )
 if( $disp == 'front' )
 {
 ?>
-		<div class="col-md-12">
-		<div class="evo_container evo_container__front_page_secondary">
+		<div class="evo_container">
+		<div class="col-md-12 evo_container__front_page_secondary">
 		<?php
 			// ------------------------- "Front Page Secondary Area" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
@@ -346,6 +348,7 @@ if( $disp == 'front' )
 	</div>
 </div>
 		<div class="col-md-12 center footer-wrapper">
+			<div class="container">
 		<?php
 			// ------------------------- "Footer" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
@@ -406,6 +409,7 @@ if( $disp == 'front' )
 					'img_height'  => 32,
 				) );
 		?>
+			</div>
 		</div>
 
 <?php
