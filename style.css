@@ -608,7 +608,6 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
 .widget_plugin_evo_WhosOnline,
 .widget_core_user_tools {
   width: 300px;
-  max-height: 600px;
   display: inline-block;
   vertical-align: top;
   margin: 15px !important;
@@ -740,6 +739,7 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
   z-index: 9999;
   position: absolute;
   border: none !important;
+  border-radius: 0px 4px 4px 0px;
 }
 .search_submit.submit.btn.btn-primary:hover {
   color: #222;
@@ -756,24 +756,6 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
 .widget_core_user_tools ul li {
   list-style-type: circle;
 }
-.widget_core_coll_xml_feeds ul li a,
-.widget_core_content_hierarchy ul li a,
-.widget_core_coll_link_list ul li a,
-.widget_core_coll_category_list ul li a,
-.widget_core_coll_comment_list ul li a,
-.widget_plugin_evo_Arch ul li a,
-.widget_core_colls_list_owner ul li a,
-.widget_core_user_tools ul li a,
-.widget_core_coll_xml_feeds .notes a,
-.widget_core_content_hierarchy .notes a,
-.widget_core_coll_link_list .notes a,
-.widget_core_coll_category_list .notes a,
-.widget_core_coll_comment_list .notes a,
-.widget_plugin_evo_Arch .notes a,
-.widget_core_colls_list_owner .notes a,
-.widget_core_user_tools .notes a {
-  color: #697b94 !important;
-}
 .widget_core_coll_xml_feeds ul li a:hover,
 .widget_core_content_hierarchy ul li a:hover,
 .widget_core_coll_link_list ul li a:hover,
@@ -789,7 +771,15 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
 .widget_core_coll_comment_list .notes a:hover,
 .widget_plugin_evo_Arch .notes a:hover,
 .widget_core_colls_list_owner .notes a:hover,
-.widget_core_user_tools .notes a:hover {
+.widget_core_user_tools .notes a:hover,
+.widget_core_coll_xml_feeds a:hover,
+.widget_core_content_hierarchy a:hover,
+.widget_core_coll_link_list a:hover,
+.widget_core_coll_category_list a:hover,
+.widget_core_coll_comment_list a:hover,
+.widget_plugin_evo_Arch a:hover,
+.widget_core_colls_list_owner a:hover,
+.widget_core_user_tools a:hover {
   color: #333 !important;
 }
 .widget_core_content_hierarchy {

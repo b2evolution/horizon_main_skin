@@ -682,7 +682,6 @@ body.pictured .front_main_content .ufld_icon_links a {
  .widget_plugin_evo_WhosOnline,
  .widget_core_user_tools {
 	width: 300px;
-	max-height: 600px;
 	display: inline-block;
 	vertical-align: top;
 	margin: 15px !important;
@@ -803,7 +802,8 @@ body.pictured .front_main_content .ufld_icon_links a {
 	margin-left: -40px;
 	z-index: 9999;
 	position: absolute;
-	border: none !important;  
+	border: none !important; 
+	border-radius: 0px 4px 4px 0px;
 	&:hover {
 		color: #222;
 		background: #ffffff;
@@ -822,8 +822,7 @@ body.pictured .front_main_content .ufld_icon_links a {
 	ul li {
 		list-style-type: circle;
 	}
-	ul li a, .notes a {
-		color: #697b94 !important;
+	ul li a, .notes a, a {
 		&:hover {
 			color: #333 !important;
 		}
