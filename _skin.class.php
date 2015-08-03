@@ -137,7 +137,7 @@ class horizon_main_Skin extends Skin
 					'pict_title_color' => array(
 						'label' => T_('Title color'),
 						'note' => T_('E-g: #ff0000 for red'),
-						'defaultvalue' => '#F0F0F0',
+						'defaultvalue' => '#FFFFFF',
 						'type' => 'color',
 					),
 					'front_text_color' => array(

@@ -985,21 +985,29 @@ img.loadimg:hover {
 .footer-wrapper .evo_post__full {
   text-align: left;
 }
-.footer-wrapper p {
-  text-decoration: none;
-  color: #333;
-}
-.footer-wrapper p a {
+.footer-wrapper a {
   text-decoration: none;
   color: #697b94 !important;
 }
-.footer-wrapper p a:hover {
+.footer-wrapper a:hover {
   text-decoration: underline;
+}
+.footer-wrapper p {
+  text-decoration: none;
+  color: #333;
 }
 .footer-wrapper .evo_widget > h3 {
   text-transform: uppercase;
   color: #5d4a55;
   font-size: 22px;
+}
+.footer-wrapper .widget_core_coll_post_list ul li {
+  border: 1px solid #5d4a55;
+}
+.footer-wrapper .evo_widget {
+  width: 300px;
+  display: inline-block;
+  margin: 15px;
 }
 .evo_login_dialog_footer {
   color: white;
