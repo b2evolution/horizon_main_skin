@@ -1,6 +1,6 @@
 <h1 align="center">Horizon_main skin for b2evolution CMS v6.</h1>
 
-<p align="center"><img src="/images/Logos/logo.png?raw=true"/></p>
+<p align="center"><img src="/images/Logos/horizon-logo-dark.png?raw=true"/></p>
 
 Horizon is a fully responsive blog skin made especially for B2evolution CMS. Based on Bootstrap's grid system, Horizon gives an enjoyable experience for user on any device.
 
