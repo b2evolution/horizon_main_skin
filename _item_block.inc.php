@@ -18,15 +18,15 @@ global $Item, $Skin, $disp;
 
 // Default params:
 $params = array_merge( array(
-		'disp_title'       => true,
-		'feature_block'    => false,
-		'content_mode'     => 'auto',		// 'auto' will auto select depending on $disp-detail
-		'item_class'                 => 'evo_post evo_content_block',
-		'item_type_class'            => 'evo_post__ptyp_',
-		'item_status_class'          => 'evo_post__',
-		'image_class'      => 'img-responsive',
-		'image_size'       => 'fit-1280x720',
-		'author_link_text' => 'preferredname',
+		'disp_title'       		=> true,
+		'feature_block'   	 	=> false,
+		'content_mode'     		=> 'auto',		// 'auto' will auto select depending on $disp-detail
+		'item_class'            => 'evo_post evo_content_block',
+		'item_type_class'       => 'evo_post__ptyp_',
+		'item_status_class'     => 'evo_post__',
+		'image_class'      		=> 'img-responsive',
+		'image_size'       		=> 'fit-1280x720',
+		'author_link_text' 		=> 'preferredname',
 	), $params );
 
 echo '<div id="styled_content_block">'; // Beginning of post display TODO: get rid of this ID, use class .evo_content_block instead
@@ -118,14 +118,18 @@ echo '<div id="styled_content_block">'; // Beginning of post display TODO: get r
 		// /skins/_item_content.inc.php file into the current skin folder.
 		// -------------------------- END OF POST CONTENT -------------------------
 
+		if( $disp != 'front' && $Item->is_intro() ) { // Don't show tags in intro posts only on disp=front
 		// List all tags attached to this post:
 		$Item->tags( array(
 				'before'    => '<nav class="small post_tags"><p>Tags: </p>',
 				'after'     => '</nav>',
 				'separator' => '',
 			) );
+		}
+		
+		
+		if( $disp != 'front') {
 		?>
-
 		<nav class="small post_comments_link">
 		<?php
 			// Link to comments, trackbacks, etc.:
@@ -151,8 +155,9 @@ echo '<div id="styled_content_block">'; // Beginning of post display TODO: get r
 						) );
 		?>
 		</nav>
-
 	<?php
+		};
+		
 		// ------------------ FEEDBACK (COMMENTS/TRACKBACKS) INCLUDED HERE ------------------
 		skin_include( '_item_feedback.inc.php', array_merge( array(
 				'before_section_title' => '<div class="clearfix"></div><h4>',

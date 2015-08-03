@@ -164,21 +164,20 @@ if( $disp != 'front' )
 		// ----------------------------- END OF REQUEST TITLE ----------------------------
 	?>
 
-	<?php
-	// Go Grab the featured post:
-	if( $Item = & get_featured_Item() )
-	{ // We have a featured/intro post to display:
-		// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
-		echo '<div class="panel panel-default"><div class="panel-body">';
-		skin_include( '_item_block.inc.php', array(
-				'feature_block' => true,
-				'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
-				'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
-			) );
-		echo '</div></div>';
-		// ----------------------------END ITEM BLOCK  ----------------------------
-	}
-	?>
+		<?php
+		// Go Grab the featured post:
+		if( ! in_array( $disp, array( 'single', 'page' ) ) && $Item = & get_featured_Item() )
+		{ // We have a featured/intro post to display:
+			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
+			skin_include( '_item_block.inc.php', array(
+					'feature_block' => true,
+					'content_mode' => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
+					'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
+					'item_class'   => ($Item->is_intro() ? 'well evo_intro_post' : 'well evo_featured_post'),
+				) );
+			// ----------------------------END ITEM BLOCK  ----------------------------
+		}
+		?>
 
 	<?php
 	if( $disp != 'front' && $disp != 'download' && $disp != 'search' )
@@ -199,7 +198,6 @@ if( $disp != 'front' )
 		// --------------------------------- START OF POSTS -------------------------------------
 		// Display message if no post:
 		display_if_empty();
-
 		while( $Item = & mainlist_get_item() )
 		{ // For each blog post, do everything below up to the closing curly brace "}"
 
@@ -256,10 +254,10 @@ if( $disp != 'front' )
 				),
 				// Form params for the forms below: login, register, lostpassword, activateinfo and msgform
 				'skin_form_before'      => '<div class="panel panel-default skin-form">'
-																			.'<div class="panel-heading">'
-																				.'<h3 class="panel-title">$form_title$</h3>'
-																			.'</div>'
-																			.'<div class="panel-body">',
+												.'<div class="panel-heading">'
+														.'<h3 class="panel-title">$form_title$</h3>'
+													.'</div>'
+												.'<div class="panel-body">',
 				'skin_form_after'       => '</div></div>',
 				// Login
 				'display_form_messages' => true,
@@ -296,6 +294,8 @@ if( $disp != 'front' )
 				'front_block_first_title_end'   => '</h1>',
 				'front_block_title_start'       => '<h2>',
 				'front_block_title_end'         => '</h2>',
+					'featured_intro_before' => '<div class="jumbotron">',
+					'featured_intro_after'  => '</div>',
 				// Form "Sending a message"
 				'msgform_form_title' => T_('Sending a message'),
 			) );

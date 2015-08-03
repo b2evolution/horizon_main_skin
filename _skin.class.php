@@ -74,12 +74,6 @@ class horizon_main_Skin extends Skin
 						'type' => 'text',
 						'size' => '50'
 					),
-					'pict_title_color' => array(
-						'label' => T_('Title color'),
-						'note' => T_('E-g: #ff0000 for red'),
-						'defaultvalue' => '#F0F0F0',
-						'type' => 'color',
-					),
 					'pict_text_color' => array(
 						'label' => T_('Text color'),
 						'note' => T_('E-g: #00ff00 for green'),
@@ -140,6 +134,12 @@ class horizon_main_Skin extends Skin
 							'max' => 100, // to 100%
 						),
 					),
+					'pict_title_color' => array(
+						'label' => T_('Title color'),
+						'note' => T_('E-g: #ff0000 for red'),
+						'defaultvalue' => '#F0F0F0',
+						'type' => 'color',
+					),
 					'front_text_color' => array(
 						'label' => T_('Text color'),
 						'note' => T_('E-g: #00ff00 for green'),
@@ -156,6 +156,12 @@ class horizon_main_Skin extends Skin
 						'label' => T_('Inverse icon color'),
 						'note' => T_('E-g: #00ff00 for green'),
 						'defaultvalue' => '#CCCCCC',
+						'type' => 'color',
+					),
+					'page_footer_color' => array(
+						'label' => T_('Footer color'),
+						'note' => T_('E-g: #000000 for black'),
+						'defaultvalue' => '#F2F2F2',
 						'type' => 'color',
 					),
 				'2_end' => array(
@@ -305,7 +311,7 @@ class horizon_main_Skin extends Skin
 
 			if( $color = $this->get_setting( 'pict_text_color' ) )
 			{ // Custom text color:
-				$custom_css .= 'body.pictured { color: '.$color." }\n";
+				$custom_css .= 'body.pictured, body.pictured .footer-wrapper p, body.pictured .widget p { color: '.$color." }\n";
 			}
 
 			if( $color = $this->get_setting( 'pict_link_color' ) )
@@ -339,7 +345,7 @@ class horizon_main_Skin extends Skin
 
 			if( $color = $this->get_setting( 'front_text_color' ) )
 			{ // Custom text color:
-				$custom_css .= 'body.pictured .front_main_content, body.pictured .front_main_content h1 small { color: '.$color." }\n";
+				$custom_css .= 'body.pictured .front_main_content, body.pictured .front_main_content h1 small { color: '.$color." !important }\n";
 			}
 
 			$link_color = $this->get_setting( 'front_link_color' );
@@ -371,6 +377,11 @@ class horizon_main_Skin extends Skin
 				{
 					$custom_css .= 'div.front_main_area { float: right;'." }\n";
 				}
+			}
+			
+			if( $color = $this->get_setting( 'page_footer_color' ) )
+			{ // Custom footer background color:
+				$custom_css .= '.footer-wrapper { background-color: '.$color." }\n";
 			}
 
 			if( ! empty( $custom_css ) )
