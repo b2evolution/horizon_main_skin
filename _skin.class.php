@@ -364,7 +364,7 @@ class horizon_main_Skin extends Skin
 
 			if( $width = $this->get_setting( 'front_width' ) )
 			{ // Custom width for front main area:
-				$custom_css .= 'div.front_main_area { width: '.$width." }\n";
+				$custom_css .= 'div.front_main_area { max-width: '.$width." }\n";
 			}
 
 			if( $position = $this->get_setting( 'front_position' ) )

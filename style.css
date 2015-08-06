@@ -664,6 +664,20 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
 .widget_core_coll_item_list .loadimg {
   border-radius: 5px;
 }
+.widget_core_coll_avatar a,
+.widget_core_coll_tag_cloud a,
+.widget_core_coll_common_links a,
+.widget_core_coll_search_form a,
+.widget_core_coll_xml_feeds a,
+.widget_core_content_hierarchy a,
+.widget_core_coll_link_list a,
+.widget_plugin_evo_Calr a,
+.widget_plugin_evo_Arch a,
+.widget_plugin_evo_WhosOnline a,
+.widget_core_user_tools a,
+.widget_core_coll_item_list a {
+  color: #697b94;
+}
 .widget_core_coll_avatar a:hover,
 .widget_core_coll_tag_cloud a:hover,
 .widget_core_coll_common_links a:hover,
@@ -1070,8 +1084,6 @@ img.loadimg:hover {
   .featurepost {
     padding: 30px 10px !important;
   }
-}
-@media only screen and (max-width: 640px) {
   body.disp_front .sitewide_header {
     margin-bottom: 0;
   }
@@ -1098,6 +1110,13 @@ img.loadimg:hover {
   body.disp_front .evo_container__footer {
     margin-top: -70px;
   }
+  div.widget_core_coll_title h1 a,
+  div.widget_core_coll_tagline {
+    text-shadow: 0px 0px rgba(0, 0, 0, 0);
+  }
+  body.pictured #skin_wrapper {
+    height: auto;
+  }
 }
 @media only screen and (max-width: 567px) {
   .widget_core_coll_post_list ul li img {
@@ -1116,6 +1135,9 @@ img.loadimg:hover {
   }
   .widget_core_coll_post_list ul li {
     padding: 25px 0px;
+  }
+  .front_main_content {
+    padding: 15px 0px !important;
   }
 }
 .close {
