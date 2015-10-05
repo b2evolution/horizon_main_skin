@@ -17,6 +17,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  */
 class horizon_main_Skin extends Skin
 {
+	var $version = '1.0';
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
@@ -99,6 +100,12 @@ class horizon_main_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Front Page Main Area Overlay')
 				),
+					'front_top_margin' => array(
+						'label' => T_('Top margin (in %)'),
+						'note' => 'Separate content from the top of the page',
+						'size' => '7',
+						'defaultvalue' => '22',
+					),
 					'front_width' => array(
 						'label' => T_('Width'),
 						'note' => '',
@@ -361,7 +368,12 @@ class horizon_main_Skin extends Skin
 				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:hover:not([class*="ufld__hovertextcolor"]) { color: '.$link_color." }\n";
 				$custom_css .= 'body.pictured .front_main_content .ufld_icon_links a:hover:not([class*="ufld__hoverbgcolor"]) { background-color: '.$icon_color." }\n";
 			}
-
+			
+			if( $front_top_margin = $this->get_setting( 'front_top_margin' ) )
+			{ // Custom title color:
+				$custom_css .= 'div.front_main_area { margin-top: '.$front_top_margin."% }\n";
+			}
+			
 			if( $width = $this->get_setting( 'front_width' ) )
 			{ // Custom width for front main area:
 				$custom_css .= 'div.front_main_area { max-width: '.$width." }\n";
