@@ -90,11 +90,16 @@ div.widget_core_coll_tagline {
 }
 div.front_main_area {
 	.front_main_content {
-		text-align: center;
+		text-align: left;
 		margin: 0 auto;
 		padding: 30px;
 		border-radius: 5px;
-		//margin-top: 22%;
+		.jumbotron {
+			padding: 48px 0;
+		}
+		.widget_core_coll_title, .widget_core_coll_tagline, .jumbotron {
+			text-align: center;
+		}
 	}	
 	div.widget { // Widgets need to be spaced
 		margin: 30px 0;
@@ -125,7 +130,6 @@ div.front_main_area {
 }
 .widget {
 	text-align: left;
-	width: 100%;
 }
 // ---------------------------------------------------------------- //
 
@@ -625,7 +629,6 @@ div.action_messages, div.log_container {
 	ul li {
 		text-align: center;
 		margin-left: 0px;
-		padding-left: 0px;
 		list-style-type: none; 
 		display: inline-block;
 		vertical-align: top;
@@ -711,7 +714,7 @@ body.pictured .front_main_content .ufld_icon_links a {
 	}
 }
 
-// Important widgets - Limited 300px width + 300px height
+// Important widgets
 .widget_core_coll_avatar,
 .widget_core_coll_tag_cloud,
 .widget_core_coll_common_links,
@@ -724,10 +727,7 @@ body.pictured .front_main_content .ufld_icon_links a {
 .widget_plugin_evo_WhosOnline,
 .widget_core_user_tools,
 .widget_core_coll_item_list {
-	width: 300px;
-	display: inline-block;
 	vertical-align: top;
-	margin: 15px !important;
 	.loadimg {
 		border-radius: 5px;
 	}
@@ -744,12 +744,10 @@ body.pictured .front_main_content .ufld_icon_links a {
 .widget_core_user_login, {
 	display: inline-block;
 	vertical-align: top;
-	margin: 15px !important;
 }
 .widget_core_coll_category_list, .widget_core_coll_comment_list {
 	display: inline-block;
 	vertical-align: top;
-	margin: 15px !important;
 	.loadimg {
 		border-radius: 5px;
 	}
@@ -767,7 +765,6 @@ body.pictured .front_main_content .ufld_icon_links a {
 		padding: 10px;
 		border: 1px solid #697b94;
 		margin: 1px 0px;
-		width: 300px;
 		font-weight: normal;
 		color: #697b94 !important;
 		/* */
@@ -886,7 +883,6 @@ body.pictured .front_main_content .ufld_icon_links a {
 		font-size: 22px;
 		font-weight: 500px;
 		color: #5d4a55;
-		width: 300px;
 		display: inline-block;
 	}
 	.chapters_list {
@@ -944,17 +940,13 @@ body.pictured .front_main_content .ufld_icon_links a {
 		}
 	}
 }
-// -----> Long Description of this Blog Widget
-.widget_core_coll_longdesc {
-	width: 100%;
-}
 // -----> Calendar Widget
 .widget_plugin_evo_Calr {
 	.bCalendarTable {
-	border-radius: 5px;
-	border-top: 3px solid #697b94;
-	border-bottom: 3px solid #697b94;
-		width: 300px;
+		width: 290px;
+		border-radius: 5px;
+		border-top: 3px solid #697b94;
+		border-bottom: 3px solid #697b94;
 		caption {
 			text-align: center;
 			a {
@@ -984,7 +976,6 @@ body.pictured .front_main_content .ufld_icon_links a {
 }
 // -----> Facebook like button
 .widget_plugin_evo_facebook {
-	width: 300px;
 	display: inline-block;
 	text-align: center;
 	iframe {
@@ -1063,7 +1054,6 @@ img.img-responsive, img.loadimg {
 		font-size: 22px;
 	}
 	.evo_widget {
-		width: 300px;
 		display: inline-block;
 		margin: 15px;
 	}
@@ -1077,17 +1067,6 @@ img.img-responsive, img.loadimg {
 	text-align: center;
 }
 
-/* Responsive layout for posts */
-/*@media only screen and (min-width: 1900px) {
-	.front_main_area { 
-		margin-top: 27%;
-	}
-}
-@media only screen and (min-width: 1500px) {
-	.front_main_content { 
-		margin-top: 25%;
-	}
-}*/
 @media only screen and (max-width: 992px) {
 	.widget_core_coll_post_list ul {
 		padding: 0px;
@@ -1113,6 +1092,9 @@ img.img-responsive, img.loadimg {
 	}
 	.jumbotron {
 		padding: 0px;
+	}
+	.widget {
+		padding: 15px 0px;
 	}
 }
 @media only screen and (max-width: 690px) {
