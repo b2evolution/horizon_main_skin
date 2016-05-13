@@ -322,7 +322,6 @@ form.evo_form .form-group .control-buttons .SaveButton.btn-primary {
   background-color: #697b94;
   border: 1px solid #697b94;
   margin: 5px;
-  -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   color: #fff;
   border-radius: 5px;
@@ -339,7 +338,6 @@ form.evo_form .form-group .control-buttons .SaveButton.btn-info {
   margin: 5px;
   background: rgba(255, 255, 255, 0.5) !important;
   color: #697b94;
-  -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   background-color: white;
   border-radius: 5px;
@@ -704,11 +702,8 @@ div.log_container {
   background: #333;
   padding-bottom: 2px;
   height: 2px;
-  -webkit-transition-property: right;
   transition-property: right;
-  -webkit-transition-duration: 0.25s;
   transition-duration: 0.25s;
-  -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
 .evo_container__footer .widget_core_coll_post_list .default:hover:before,
@@ -834,9 +829,7 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  -webkit-transition-property: color;
   transition-property: color;
-  -webkit-transition-duration: 0.2s;
   transition-duration: 0.3s;
 }
 .widget_core_coll_common_links ul li strong a:hover {
@@ -857,11 +850,9 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
   -webkit-transform-origin: 50% 0;
   -ms-transform-origin: 50% 0;
       transform-origin: 50% 0;
-  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
   transition-property: transform;
-  -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
 .widget_core_coll_common_links ul li strong a:hover,
@@ -881,7 +872,6 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
   height: 40px;
   border-radius: 5px 5px 5px 5px !important;
   border: 1px solid #333333;
-  -webkit-transition: all 0.25s ease-out;
   /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
   transition: all 0.25s ease-out;
   /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
@@ -1007,7 +997,6 @@ body.pictured .front_main_content .ufld_icon_links a .fa {
 }
 .widget_core_coll_media_index .loadimg {
   opacity: 1;
-  -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   box-shadow: 3px 15px 5px -10px rgba(0, 0, 0, 0.25);
   padding: 0px;
@@ -1070,7 +1059,6 @@ body.pictured .evo_container__footer .widget_core_org_members .col-lg-4 a.user_l
 img.img-responsive,
 img.loadimg {
   opacity: 1;
-  -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   box-shadow: 3px 15px 5px -10px rgba(0, 0, 0, 0.25);
 }
@@ -1296,11 +1284,8 @@ img.loadimg:hover {
   background: #333;
   padding-bottom: 2px;
   height: 2px;
-  -webkit-transition-property: right;
   transition-property: right;
-  -webkit-transition-duration: 0.25s;
   transition-duration: 0.25s;
-  -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
 .main_page_wrapper .evo_post h2 a:hover {
