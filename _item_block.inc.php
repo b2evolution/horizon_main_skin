@@ -118,7 +118,7 @@ echo '<div class="evo_content_block">';
 		// /skins/_item_content.inc.php file into the current skin folder.
 		// -------------------------- END OF POST CONTENT -------------------------
 
-		if( $disp != 'front' && $Item->is_intro() ) { // Don't show tags in intro posts only on disp=front
+		if( $disp != 'front' && ! $Item->is_intro() ) { // Don't show tags in intro posts only on disp=front
 		// List all tags attached to this post:
 		$Item->tags( array(
 				'before'    => '<nav class="small post_tags"><p>Tags: </p>',
@@ -128,7 +128,7 @@ echo '<div class="evo_content_block">';
 		}
 		
 		
-		if( $disp != 'front') {
+		if( $disp != 'front' && ! $Item->is_intro() ) {
 		?>
 		<nav class="small post_comments_link">
 		<?php
