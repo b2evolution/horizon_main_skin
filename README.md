@@ -10,7 +10,7 @@ Horizon_main is the intro page created especially for "Horizon" b2evolution blog
 
 ### Update Log
 
-#### v1.2.1
+#### v1.1.2
 - Widget LESS modules include
 - Skin version var fix
 - Pagination layout fix
