@@ -146,7 +146,7 @@ class horizon_main_Skin extends Skin
 					),
 					'front_position' => array(
 						'label' => T_('Position'),
-						'note' => T_('Chose position of the Main Area section.'),
+						'note' => T_('Choose position of the Main Area section.'),
 						'defaultvalue' => 'middle',
 						'options' => array(
 								'left'   => T_('Left'),
