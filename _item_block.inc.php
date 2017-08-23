@@ -126,8 +126,8 @@ echo '<div class="evo_content_block">';
 				'separator' => '',
 			) );
 		}
-		
-		
+
+
 		if( $disp != 'front' && ! $Item->is_intro() ) {
 		?>
 		<nav class="small post_comments_link">
@@ -137,9 +137,9 @@ echo '<div class="evo_content_block">';
 							'type' => 'comments',
 							'link_before' => '',
 							'link_after' => '',
-							'link_text_zero' => T_('<span>Leave a comment <i class="fa fa-angle-double-right"></i></span>'),
-							'link_text_one' => T_('1 <i class="fa fa-comments"></i>'),
-							'link_text_more' => T_('%d <i class="fa fa-comments"></i>'),
+							'link_text_zero' => '<span>'.T_('Leave a comment').' <i class="fa fa-angle-double-right"></i></span>',
+							'link_text_one' => '1 <i class="fa fa-comments"></i>',
+							'link_text_more' => '%d <i class="fa fa-comments"></i>',
 							'link_title' => '#',
 						) );
 
@@ -157,7 +157,7 @@ echo '<div class="evo_content_block">';
 		</nav>
 	<?php
 		};
-		
+
 		// ------------------ FEEDBACK (COMMENTS/TRACKBACKS) INCLUDED HERE ------------------
 		skin_include( '_item_feedback.inc.php', array_merge( array(
 				'before_section_title' => '<div class="clearfix"></div><h4>',
