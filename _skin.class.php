@@ -21,7 +21,7 @@ class horizon_main_Skin extends Skin
 	 * Skin version
 	 * @var string
 	 */
-	var $version = '1.1.2';
+	var $version = '1.1.3';
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
