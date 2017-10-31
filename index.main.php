@@ -70,14 +70,15 @@ if( $disp != 'front' )
 { // Don't display header on disp=front
 ?>
 	<header class="row">
-		<div class="coll-xs-12">
-			<div class="evo_container evo_container__page_top">
 	<?php
 		// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
 		// Display container and contents:
-		skin_container( NT_('Page Top'), array(
+		widget_container( 'page_top', array(
 				// The following params will be used as defaults for widgets included in this container:
-				'block_start'         => '<div class="widget $wi_class$">',
+				'container_display_if_empty' => false, // If no widget, don't display container at all
+				'container_start'     => '<div class="coll-xs-12"><div class="evo_container $wico_class$">',
+				'container_end'       => '</div></div>',
+				'block_start'         => '<div class="evo_widget $wi_class$">',
 				'block_end'           => '</div>',
 				'block_display_title' => false,
 				'list_start'          => '<ul>',
@@ -87,24 +88,22 @@ if( $disp != 'front' )
 			) );
 		// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
 	?>
-			</div>
-		</div>
-		<div class="coll-xs-12">
-			<div class="evo_container evo_container__header">
+
 	<?php
 		// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
 		// Display container and contents:
-		skin_container( NT_('Header'), array(
+		widget_container( 'header', array(
 				// The following params will be used as defaults for widgets included in this container:
-				'block_start'       => '<div class="widget $wi_class$">',
+				'container_display_if_empty' => false, // If no widget, don't display container at all
+				'container_start'   => '<div class="coll-xs-12"><div class="evo_container $wico_class$">',
+				'container_end'     => '</div></div>',
+				'block_start'       => '<div class="evo_widget $wi_class$">',
 				'block_end'         => '</div>',
 				'block_title_start' => '<h1>',
 				'block_title_end'   => '</h1>',
 			) );
 		// ----------------------------- END OF "Header" CONTAINER -----------------------------
 	?>
-			</div>
-		</div>
 	</header>
 <?php
 }
@@ -326,24 +325,19 @@ if( $disp != 'front' )
 <?php
 if( $disp == 'front' )
 {
-?>
-		<div class="evo_container">
-		<div class="col-md-12 evo_container__front_page_secondary">
-		<?php
 			// ------------------------- "Front Page Secondary Area" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
-			skin_container( NT_('Front Page Secondary Area'), array(
+			widget_container( 'front_page_secondary_area', array(
 					// The following params will be used as defaults for widgets included in this container:
-					'block_start'       => '<div class="widget $wi_class$">',
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start'   => '<div class="col-md-12 evo_container $wico_class$">',
+					'container_end'     => '</div>',
+					'block_start'       => '<div class="evo_widget $wi_class$">',
 					'block_end'         => '</div>',
 					'block_title_start' => '<h2 class="page-header">',
 					'block_title_end'   => '</h2>',
 				) );
 			// ----------------------------- END OF "Front Page Secondary Area" CONTAINER -----------------------------
-		?>
-		</div>
-		</div>
-<?php
 }
 ?>
 		</div>
@@ -353,9 +347,11 @@ if( $disp == 'front' )
 			<div class="container">
 		<?php
 			// ------------------------- "Footer" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			skin_container( NT_('Footer'), array(
+			widget_container( 'footer', array(
 					// The following params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
 				) );
 			// ----------------------------- END OF "Footer" CONTAINER -----------------------------
 		?>

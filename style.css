@@ -512,9 +512,9 @@ div.widget_core_coll_related_post_list div.item_first_image {
   text-align: center;
 }
 div.evo_container__sidebar div.widget_core_coll_item_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a,
-div.evo_container__sidebar2 div.widget_core_coll_item_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a,
+div.evo_container__sidebar_2 div.widget_core_coll_item_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a,
 div.evo_container__sidebar div.widget_core_coll_post_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a,
-div.evo_container__sidebar2 div.widget_core_coll_post_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a {
+div.evo_container__sidebar_2 div.widget_core_coll_post_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a {
   font-size: 16px;
 }
 @media (max-width: 1599px) {
@@ -637,6 +637,9 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   line-height: 1.6em;
+}
+.evo_designer {
+  line-height: initial;
 }
 body.pictured {
   height: 100%;
@@ -827,15 +830,15 @@ div.front_main_area div.widget_core_coll_post_list.evo_withgroup > ul > li {
 .evo_container__footer p {
   margin-top: 10px;
 }
-.evo_container__front_page_secondary {
+.evo_container__front_page_secondary_area {
   text-align: center;
   margin-bottom: 30px;
   padding-top: 30px;
 }
-.evo_container__front_page_secondary .widget_core_coll_title a:hover {
+.evo_container__front_page_secondary_area .widget_core_coll_title a:hover {
   color: #333;
 }
-.widget {
+.evo_widget {
   text-align: left;
 }
 .widget_core_user_login #login_form .form-group {
@@ -1760,12 +1763,12 @@ img.loadimg:hover {
   .jumbotron {
     padding: 0px;
   }
-  .widget {
+  .evo_widget {
     padding: 15px 0px;
   }
 }
 @media only screen and (max-width: 690px) {
-  .widget {
+  .evo_widget {
     margin: 15px 0px !important;
     width: 100% !important;
   }
